@@ -1,2 +1,6 @@
 [2026-03-23T10:14:19.919] [INFO] default - server is running on 4545 🚀🚀🚀
 [2026-03-23T10:14:35.907] [INFO] default - Mongodb connected: ac-l0m6pej-shard-00-02.rauve6d.mongodb.net
+[2026-03-23T14:23:41.505] [INFO] default - server is running on 4545 🚀🚀🚀
+[2026-03-23T14:24:13.881] [ERROR] default - Error: Server selection timed out after 30000 ms
+[2026-03-23T14:24:25.593] [INFO] default - server is running on 4545 🚀🚀🚀
+[2026-03-23T14:24:44.590] [INFO] default - Mongodb connected: ac-l0m6pej-shard-00-02.rauve6d.mongodb.net
