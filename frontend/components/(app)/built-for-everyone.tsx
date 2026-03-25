@@ -16,7 +16,7 @@ interface FeatureCard {
 const featureCards: FeatureCard[] = [
   {
     image: {
-      src: '/images/man-harvest-tomatoes.jpg',
+      src: '/images/svgs/man-harvest-tomato.jpg',
       alt: 'Man harvesting tomatoes',
       width: 506,
       height: 287,
@@ -31,7 +31,7 @@ const featureCards: FeatureCard[] = [
   },
   {
     image: {
-      src: '/images/business-meeting.jpg',
+      src: '/images/svgs/business-meeting.jpg',
       alt: 'Business discussion',
       width: 506,
       height: 287,
