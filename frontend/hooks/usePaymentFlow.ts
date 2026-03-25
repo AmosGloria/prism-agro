@@ -10,7 +10,7 @@ export const usePaymentFlow = (orderId: string) => {
   const [status, setStatus] = useState<PaymentStatus>("idle");
 
   useEffect(() => {
-    const txnRef = searchParams.get("txn_ref");
+    const txnRef = searchParams?.get("txn_ref");
     if (txnRef && status === "idle") {
       verify(txnRef);
     }

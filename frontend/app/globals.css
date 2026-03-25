@@ -14,8 +14,69 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
+    /* Brand palette */
+    --brand-900: #023103;
+    --brand-800: #046207;
+    --brand-700: #06930a;
+    --brand-600: #08c40e;
+    --brand-500: #0af511;
+    --brand-400: #3bf741;
+    --brand-300: #6cf970;
+    --brand-200: #9dfba0;
+    --brand-100: #cefdcf;
+    --brand-50: #e6fee7;
+    --brand-25: #f0fef1;
+    --brand-10: #f5fff5;
+
     --background: #0a0a0a;
     --foreground: #ededed;
+
+    /* Semantic tokens */
+    --bg-base: #f5fff5;
+    --bg-subtle: #f0fef1;
+    --bg-muted: #e6fee7;
+    --surface: #ffffff;
+    --surface-raised: #ffffff;
+
+    --text-primary: #023103;
+    --text-secondary: #046207;
+    --text-muted: #06930a;
+    --text-inverse: #ffffff;
+
+    --border-light: #cefdcf;
+    --border-default: #9dfba0;
+    --border-strong: #6cf970;
+
+    --accent-primary: #08c40e;
+    --accent-bright: #0af511;
+    --accent-glow: #3bf741;
+
+    /* Status colors */
+    --status-held: #f59e0b;
+    --status-transit: #3b82f6;
+    --status-completed: #08c40e;
+    --status-disputed: #ef4444;
+    --status-pending: #8b5cf6;
+
+    /* Admin scheme */
+    --admin-bg: #0a0f1e;
+    --admin-surface: #111827;
+    --admin-border: #1f2937;
+    --admin-accent: #3b82f6;
+
+    /* Spacing & radius */
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+
+    /* Font */
+    --font-display: "Syne", sans-serif;
+    --font-body: "DM Sans", sans-serif;
+
+    /* Sidebar */
+    --sidebar-width: 240px;
+    --navbar-height: 64px;
   }
 }
 
@@ -25,11 +86,86 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.layout {
+  @apply px-5 lg:px-[70px];
+}
 
-  .layout {
-    @apply px-5 lg:px-[70px] 
-  }
+.section {
+  @apply py-20;
+}
 
-  .section {
-    @apply py-20
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-subtle);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 99px;
+}
+
+/* Freshness bar animation */
+@keyframes freshnessShimmer {
+  0% {
+    background-position: -200% center;
   }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(8, 196, 14, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(8, 196, 14, 0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeInUp 0.4s ease forwards;
+}
+.animate-slide-in {
+  animation: slideIn 0.3s ease forwards;
+}
+.animate-pulse-glow {
+  animation: pulse-glow 2s infinite;
+}
+
+/* Card hover lift */
+.card-hover {
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(2, 49, 3, 0.12);
+}
