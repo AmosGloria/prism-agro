@@ -1,19 +1,18 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { Filter, MapPin, Scale, ShoppingCart, Eye, Leaf } from 'lucide-react';
+import { Filter} from 'lucide-react';
 import { useFreshness, useTimeAgo } from '@/hooks';
 import { listingsApi } from '@/lib/api';
 import type { Listing, CropType } from '@/types';
-import { FreshnessBar } from '@/components/ui/freshnessBar';
 import { EmptyState } from '@/components/ui/empty-state';
-import { MOCK_LISTINGS } from '@/mock-datas/farmer';
-import { CROP_EMOJI, CROP_TYPES } from '@/mock-datas/market-place';
 import { ListingCard } from '@/components/ui/listing-card';
+import { MOCK_LISTINGS } from '@/mock-datas/buyer';
+import { CROP_EMOJI, CROP_TYPES } from '@/mock-datas/market-place';
 
 
-// Marketplace Page
-export default function MarketplacePage() {
+
+function Marketplace() {
   const searchParams = useSearchParams();
   const router = useRouter();
 
@@ -29,8 +28,8 @@ export default function MarketplacePage() {
         const params: Record<string, string> = {};
         if (cropFilter) params.cropType = cropFilter;
         if (locationFilter) params.location = locationFilter;
-        const data = await listingsApi.getAll(params) as any;
-        setListings(data.listings || data);
+        // const data = await listingsApi.getAll(params) as any;
+        // setListings(data.listings || data);
         setListings(MOCK_LISTINGS); // swap for API call
       } finally {
         setLoading(false);
@@ -148,4 +147,20 @@ export default function MarketplacePage() {
       )}
     </div>
   );
+}
+
+function Loading() {
+  return (
+    <div className='h-screen w-full flex items-center justify-center'>
+      <p>Loading</p>
+    </div>
+  )
+}
+
+export default function MarketplacePage() {
+  return (
+    <Suspense fallback={<Loading/>}>
+      <Marketplace/>
+    </Suspense>
+  )
 }
