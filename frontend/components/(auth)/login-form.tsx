@@ -7,6 +7,13 @@ import { useLoginForm } from '@/hooks/useLoginForm'
 import OAuth from '../(common)/oauth'
 import Field from '../(common)/fieled'
 
+const DEMO_ACCOUNTS = [
+  { email: 'buyer@farm.ng', role: 'Buyer', emoji: '🛒', color: '#08C40E' },
+  { email: 'farmer@farm.ng', role: 'Farmer', emoji: '🌾', color: '#046207' },
+  { email: 'logistics@farm.ng', role: 'Logistics', emoji: '🚚', color: '#3B82F6' },
+  { email: 'admin@farm.ng', role: 'Admin', emoji: '🛡', color: '#8B5CF6' },
+];
+
 const LoginForm = () => {
   const { form, isLoading, serverError, onSubmit } = useLoginForm()
   const { register, formState: { errors } } = form
@@ -80,6 +87,23 @@ const LoginForm = () => {
             <Link href="/forgot-password" className="text-xs font-semibold text-[#3EBB4A] hover:underline">
               Forgot password?
             </Link>
+          </div>
+
+          <div className="grid grid-cols-2 gap-2 mt-2">
+            {DEMO_ACCOUNTS.map((acc) => (
+              <button
+                key={acc.email}
+                type="button"
+                onClick={() => {
+                  form.setValue('email', acc.email)
+                  form.setValue('password', 'password123') // default demo password
+                }}
+                className="flex items-center gap-2 px-3 py-2 rounded-lg border text-xs hover:bg-gray-50 transition"
+              >
+                <span>{acc.emoji}</span>
+                <span className="font-medium">{acc.role}</span>
+              </button>
+            ))}
           </div>
 
           {/* Submit */}
