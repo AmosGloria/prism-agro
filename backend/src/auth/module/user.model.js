@@ -26,7 +26,6 @@ const userSchema = new mongoose.Schema({
     regType: {
         type: String,
         enum: ['farmer', 'retailer', 'buyer'],
-        default: 'email'
     },
     role: {
         type: String,
