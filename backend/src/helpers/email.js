@@ -3,13 +3,17 @@ const nodemailer = require('nodemailer');
 const sendMail = async (email, subject, html) => {
   try {
     const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: 465,
-      secure: true, // Use SSL for port 465
+      host: process.env.SMTP_HOST, // e.g. mail.izonmfb.com.ng
+      port: 587,
+      secure: false, // must be false for 587
       auth: {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASSWORD,
       },
+      tls: {
+        rejectUnauthorized: false, // helps with some self-signed certs (common in webmail)
+      },
+      connectionTimeout: 10000,
     });
 
     const mailOptions = {
