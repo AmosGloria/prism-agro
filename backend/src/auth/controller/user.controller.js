@@ -40,19 +40,19 @@ exports.registerUser = async (req, res) => {
       }
   
       // 🔢 Generate OTP
-      let otp = await generateOtp();
-      const otpExpiryTime = Date.now() + 5 * 60 * 1000;
-
-      otp = hashPassword(otp);
+      const newOtp = Math.floor(100000 + Math.random() * 900000).toString();
+      const otp = await hashPassword(newOtp);
+  
+      const otpExpiryTime = new Date(Date.now() + 5 * 60 * 1000);
+      await updateUserOtp(email, otp, otpExpiryTime);
   
       // 💾 Save OTP
       await updateUserOtp(email, otp, otpExpiryTime);
   
-      // 📧 Send OTP email
       await sendMail(
         email,
         'Your OTP Code',
-        `Your OTP code is ${otp}. It will expire in 5 minutes.`
+        `Your OTP code is ${newOtp}. It will expire in 5 minutes.`
       );
 
     //   token
