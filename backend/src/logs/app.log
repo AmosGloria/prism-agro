@@ -1,9 +1,22 @@
 [2026-03-23T10:14:19.919] [INFO] default - server is running on 4545 🚀🚀🚀
 [2026-03-23T10:14:35.907] [INFO] default - Mongodb connected: ac-l0m6pej-shard-00-02.rauve6d.mongodb.net
+<<<<<<< HEAD
+[2026-03-24T12:46:29.257] [INFO] default - server is running on 4545 🚀🚀🚀
+[2026-03-24T12:46:45.184] [INFO] default - Mongodb connected: ac-l0m6pej-shard-00-00.rauve6d.mongodb.net
+[2026-03-24T16:47:11.231] [INFO] default - server is running on 4545 🚀🚀🚀
+[2026-03-24T16:47:16.990] [INFO] default - Mongodb connected: ac-l0m6pej-shard-00-02.rauve6d.mongodb.net
+[2026-03-24T18:50:44.126] [INFO] default - server is running on 4545 🚀🚀🚀
+[2026-03-24T18:50:48.084] [INFO] default - Mongodb connected: ac-l0m6pej-shard-00-01.rauve6d.mongodb.net
+[2026-03-24T18:59:01.040] [INFO] default - server is running on 4545 🚀🚀🚀
+[2026-03-24T18:59:04.807] [INFO] default - Mongodb connected: ac-l0m6pej-shard-00-01.rauve6d.mongodb.net
+[2026-03-24T20:56:14.541] [INFO] default - server is running on 4545 🚀🚀🚀
+[2026-03-24T20:56:18.123] [INFO] default - Mongodb connected: ac-l0m6pej-shard-00-02.rauve6d.mongodb.net
+=======
 [2026-03-23T14:23:41.505] [INFO] default - server is running on 4545 🚀🚀🚀
 [2026-03-23T14:24:13.881] [ERROR] default - Error: Server selection timed out after 30000 ms
 [2026-03-23T14:24:25.593] [INFO] default - server is running on 4545 🚀🚀🚀
 [2026-03-23T14:24:44.590] [INFO] default - Mongodb connected: ac-l0m6pej-shard-00-02.rauve6d.mongodb.net
+<<<<<<< HEAD
 [2026-03-25T10:13:20.203] [INFO] default - server is running on 4545 🚀🚀🚀
 [2026-03-25T10:13:28.215] [INFO] default - Mongodb connected: ac-l0m6pej-shard-00-00.rauve6d.mongodb.net
 [2026-03-25T10:34:07.048] [INFO] default - server is running on 4545 🚀🚀🚀
@@ -263,3 +276,6 @@
 [2026-03-26T01:07:03.046] [INFO] default - server is running on 4545 🚀🚀🚀
 [2026-03-26T01:07:07.418] [INFO] default - server is running on 4545 🚀🚀🚀
 [2026-03-26T01:07:11.839] [INFO] default - Mongodb connected: ac-l0m6pej-shard-00-00.rauve6d.mongodb.net
+=======
+>>>>>>> 38cf752804652c0d659b935f834edee76dd0cee7
+>>>>>>> db47c06c4aae7fff2f57b4dd2a958f5590bdcaa9
