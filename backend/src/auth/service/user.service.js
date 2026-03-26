@@ -3,6 +3,21 @@ const User = require('../module/user.model');
 const axios = require('axios');
 const { getAccessToken } = require('../../utilities/interswitch.auth');
 
+const nodemailer = require('nodemailer');
+
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS // must be APP PASSWORD
+  }
+});
+
+// Optional but recommended (runs once)
+transporter.verify()
+  .then(() => console.log('✅ Email server ready'))
+  .catch(err => console.error('❌ Email config error:', err));
+
 exports.createUser = async (fullName, email, password) => {
   try {
     const user = new User({
@@ -79,29 +94,22 @@ exports.verifyNin = async ({ firstName, lastName, nin }) => {
   };
 
   // send otp using nodemailer
-exports.sendMail = async (email, subject, text) => {
+  exports.sendMail = async (email, subject, text) => {
     try {
-        const nodemailer = require('nodemailer');
-        const transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: {
-                user: process.env.EMAIL_USER,
-                pass: process.env.EMAIL_PASS
-            }
-        });
-
-        const mailOptions = {
-            from: `"Prism Agro" <${process.env.EMAIL_USER}>`,
-            to: email,
-            subject,
-            text
-        };
-
-        await transporter.sendMail(mailOptions);
+      const mailOptions = {
+        from: `"Prism Agro" <${process.env.EMAIL_USER}>`,
+        to: email,
+        subject,
+        text
+      };
+  
+      return await transporter.sendMail(mailOptions);
+  
     } catch (error) {
-        throw error;
+      console.error('Mail error:', error);
+      throw error;
     }
-}
+  };
 
 exports.resendOtp = async (email) => {
     try {

@@ -4,77 +4,67 @@ const { hashPassword, generateToken, setTokenCookie, comparePassword } = require
 const { generateOtp } = require("../../helpers/otp");
 
 exports.registerUser = async (req, res) => {
-    try {
-      const { fullName, email } = req.body;
-      let password = req.body.password;
-  
-      // 🔍 Validate input
-      if (!fullName || !email || !password) {
-        return res.status(400).json({
-          message: 'Full name, email, and password are required'
-        });
-      }
-  
-      // 🔎 Check if user exists
-      const userExists = await getUserByEmail(email);
-      if (userExists) {
-        return res.status(400).json({
-          message: 'Email already in use'
-        });
-      }
-  
-      // 🔐 Hash password
-      password = await hashPassword(password);
-  
-      // 👤 Create user
-      const newUser = await createUser(
-        fullName,
-        email,
-        password
-      );
-  
-      if (!newUser) {
-        return res.status(500).json({
-          message: 'Failed to register user'
-        });
-      }
-  
-      // 🔢 Generate OTP
-      const newOtp = Math.floor(100000 + Math.random() * 900000).toString();
-      const otp = await hashPassword(newOtp);
-  
-      const otpExpiryTime = new Date(Date.now() + 5 * 60 * 1000);
-      await updateUserOtp(email, otp, otpExpiryTime);
-  
-      // 💾 Save OTP
-      await updateUserOtp(email, otp, otpExpiryTime);
-  
-      await sendMail(
-        email,
-        'Your OTP Code',
-        `Your OTP code is ${newOtp}. It will expire in 5 minutes.`
-      );
+  try {
+    const { fullName, email, password } = req.body;
 
-    //   token
-  
-      // ✅ Single response
-      return res.status(201).json({
-        message: 'User registered successfully. Check your email for OTP.',
-        user: {
-          id: newUser._id,
-          fullName: newUser.fullName,
-          email: newUser.email,
-          role: newUser.role
-        }
-      });
-  
-    } catch (error) {
-      return res.status(error.status || 500).json({
-        message: error.message || 'An error occurred during registration',
-        details: error.details || null
+    if (!fullName || !email || !password) {
+      return res.status(400).json({
+        message: 'Full name, email, and password are required'
       });
     }
-  };
+
+    const userExists = await getUserByEmail(email);
+    if (userExists) {
+      return res.status(400).json({
+        message: 'Email already in use'
+      });
+    }
+
+    const hashedPassword = await hashPassword(password);
+
+    const newUser = await createUser({
+      fullName,
+      email,
+      password: hashedPassword
+    });
+
+    if (!newUser) {
+      return res.status(500).json({
+        message: 'Failed to register user'
+      });
+    }
+
+    const newOtp = Math.floor(100000 + Math.random() * 900000).toString();
+    const otp = await hashPassword(newOtp);
+
+    const otpExpiryTime = new Date(Date.now() + 5 * 60 * 1000);
+
+    await updateUserOtp(email, otp, otpExpiryTime);
+
+    // 🚀 Send email in background
+    sendMail(
+      email,
+      'Your OTP Code',
+      `Your OTP code is ${newOtp}. It will expire in 5 minutes.`
+    ).catch(err => console.error('Email error:', err));
+
+    return res.status(201).json({
+      message: 'User registered successfully. Check your email for OTP.',
+      user: {
+        id: newUser._id,
+        fullName: newUser.fullName,
+        email: newUser.email,
+        role: newUser.role
+      }
+    });
+
+  } catch (error) {
+    return res.status(error.status || 500).json({
+      message: error.message || 'An error occurred during registration',
+      details: error.details || null
+    });
+  }
+};
 
   exports.resendOtp = async (req, res) => {
     const email = req.body.email;
