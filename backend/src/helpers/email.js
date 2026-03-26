@@ -13,7 +13,7 @@ const sendMail = async (email, subject, html) => {
     });
 
     const mailOptions = {
-      from: `PrismAgro <${process.env.SMTP_FROM_EMAIL || 'info@prismagro.com'}>`,
+      from: `PrismAgro <${process.env.SMTP_FROM_EMAIL || 'riches.arise@izonmfb.com.ng'}>`,
       to: email,
       subject,
       html,
