@@ -43,11 +43,17 @@ exports.registerUser = async (req, res) => {
     await updateUserOtp(email, otp, otpExpiryTime);
 
     // 🚀 Send email in background
-    await sendMail(
-      email,
-      'Your OTP Code',
-      `Your OTP code is ${newOtp}. It will expire in 5 minutes.`
-    ).catch(err => console.error('Email error:', err));
+
+     // Send registration email
+      const subject = 'Welcome to PrismAgro - Verify Your Email';
+      const html = `<h1>Welcome to PrismAgro</h1><p>Your OTP code is <strong>${newOtp}</strong>. It will expire in 5 minutes.</p>`;
+      await sendMail(email, subject, html);
+
+    // await sendMail(
+    //   email,
+    //   'Your OTP Code',
+    //   `Your OTP code is ${newOtp}. It will expire in 5 minutes.`
+    // ).catch(err => console.error('Email error:', err));
 
     return res.status(201).json({
       message: 'User registered successfully. Check your email for OTP.',
