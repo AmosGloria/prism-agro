@@ -20,11 +20,11 @@ transporter.verify()
 
 exports.createUser = async (fullName, email, password) => {
   try {
-    const user = new User({
+    const user = new User(
       fullName,
       email,
       password
-    });
+    );
 
     return await user.save();
 
