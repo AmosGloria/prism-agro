@@ -43,7 +43,7 @@ exports.registerUser = async (req, res) => {
     await updateUserOtp(email, otp, otpExpiryTime);
 
     // 🚀 Send email in background
-    sendMail(
+    await sendMail(
       email,
       'Your OTP Code',
       `Your OTP code is ${newOtp}. It will expire in 5 minutes.`

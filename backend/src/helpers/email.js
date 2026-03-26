@@ -3,25 +3,27 @@ const nodemailer = require('nodemailer');
 const sendMail = async (email, subject, html) => {
   try {
     const transporter = nodemailer.createTransport({
-      service: process.env.EMAIL_HOST,
+      host: process.env.SMTP_HOST,
+      port: 465,
+      secure: true, // Use SSL for port 465
       auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.SMTP_PASS,
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASSWORD,
       },
     });
 
     const mailOptions = {
-      from: 'astrosoft <info@astrosoft.io>',
+      from: `PrismAgro <${process.env.SMTP_FROM_EMAIL || 'info@prismagro.com'}>`,
       to: email,
-      subject: subject,
-      html: html,
+      subject,
+      html,
     };
 
     await transporter.sendMail(mailOptions);
-    console.log('Email sent successfully to', email);
+    console.log(`[${new Date().toISOString()}] Email sent successfully to ${email}`);
   } catch (error) {
-    console.error('Error sending mail:', error);
-    throw new Error('Failed to send mail');
+    console.error(`[${new Date().toISOString()}] Error sending mail:`, error);
+    throw new Error(`Failed to send mail: ${error.message}`);
   }
 };
 
