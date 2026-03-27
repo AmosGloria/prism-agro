@@ -5,10 +5,17 @@ import {
   ShieldCheck, Truck, Leaf, ChevronRight,
   Loader2, CheckCircle2, Lock, ArrowLeft
 } from "lucide-react";
-import { usePaymentFlow, PaymentStatus } from "../../hooks/usePaymentFlow";
+import { usePaymentFlow } from "../../hooks/usePaymentFlow";
 
 export default function Checkout({ orderId }: { orderId: string }) {
   const { status, initialize, router } = usePaymentFlow(orderId);
+
+  const pricing = {
+    produceSubtotal: 45000,
+    logisticsFee: 2500,
+    escrowFee: 500,
+    total: 48000,
+  };
 
   if (status === "verifying" || status === "initializing") {
     return (
@@ -131,7 +138,7 @@ export default function Checkout({ orderId }: { orderId: string }) {
             </div>
 
             <button
-              onClick={initialize}
+              onClick={() => initialize(pricing)}
               className="w-full bg-[#39AA44] text-white py-6 rounded-2xl font-black text-lg flex items-center justify-center gap-3 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-xl shadow-[#39AA44]/20"
             >
               PAY SECURELY <ChevronRight size={20} />
