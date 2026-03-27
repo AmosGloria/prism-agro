@@ -83,7 +83,7 @@ export const MOCK_ORDERS: Order[] = [
 export const CROP_EMOJI: Record<string, string> = {
   Tomato: "🍅",
   Yam: "🥔",
-  Cassava: "🌿",
+  Cassava: "🫚",
   Maize: "🌽",
   Rice: "🍚",
   Pepper: "🌶️",

@@ -11,6 +11,7 @@ import {
   Wallet,
 } from "lucide-react";
 import Image from "next/image";
+import { cn } from "@/lib/utils";
 
 interface NavbarProps {
   userName?: string;
@@ -144,7 +145,7 @@ export function DashboardNavbar({
         >
           <button
             onClick={() => setDropdownOpen((v) => !v)}
-            className="flex items-center gap-2 p-1.5 rounded-xl transition-colors hover:bg-[#E6FEE7]"
+            className="flex items-center gap-2 p-1.5 rounded-md transition-colors"
           >
             <div
               className="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-bold text-white"
@@ -178,7 +179,7 @@ export function DashboardNavbar({
           {/* Dropdown */}
           {dropdownOpen && (
             <div
-              className="absolute right-0 top-full mt-2 w-48 rounded-xl shadow-xl overflow-hidden z-50 animate-fade-up"
+              className="absolute right-0 top-full mt-2 w-48 rounded-md shadow-xl overflow-hidden z-50 animate-fade-up"
               style={{
                 backgroundColor: isAdmin
                   ? "var(--admin-surface)"
@@ -188,8 +189,9 @@ export function DashboardNavbar({
             >
               <Link
                 href={`/${role}/profile`}
-                className="flex items-center gap-3 px-4 py-3 text-sm hover:bg-[#F0FEF1] transition-colors"
-                style={{ color: isAdmin ? "white" : "var(--text-primary)" }}
+                className={cn("flex items-center gap-3 px-4 py-3 text-sm hover:bg-[#F0FEF1]  transition-colors",
+                  isAdmin ? "text-white hover:text-black" : "text-(--text-primary)"
+                )}
                 onClick={() => setDropdownOpen(false)}
               >
                 <User
@@ -218,6 +220,6 @@ export function DashboardNavbar({
           )}
         </div>
       </div>
-    </header>
+    </header >
   );
 }

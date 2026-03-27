@@ -26,7 +26,7 @@ export default function proxy(request: NextRequest) {
   if (userRole && userRole !== requiredRole) {
     const HOME: Record<string, string> = {
       buyer: "/buyer/marketplace",
-      farmer: "/farmer/dashboard",
+      farmer: "/farmer",
       logistics: "/logistics/loads",
       admin: "/admin/disputes",
     };
