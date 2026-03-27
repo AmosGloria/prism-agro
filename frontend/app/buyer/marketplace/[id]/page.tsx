@@ -108,7 +108,7 @@ function ListingDetail({ listing }: { listing: Listing }) {
           <span className="font-black text-[#023103] text-base" style={{ fontFamily: 'var(--font-display)' }}>₦{total.toLocaleString()}</span>
         </div>
         <button
-          onClick={() => router.push(`/buyer/payment?listingId=${listing.id}&qty=${qty}`)}
+          onClick={() => router.push(`/buyer/checkout/${listing.id}?qty=${qty}`)}
           className="w-full py-3.5 rounded-xl bg-[#08C40E] text-white font-bold text-sm flex items-center justify-center gap-2 hover:bg-[#06930A] transition-all shadow-lg shadow-green-200"
           style={{ fontFamily: 'var(--font-display)' }}
         >

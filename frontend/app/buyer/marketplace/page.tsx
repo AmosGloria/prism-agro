@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { Filter} from 'lucide-react';
+import { Filter } from 'lucide-react';
 import { useFreshness, useTimeAgo } from '@/hooks';
 import { listingsApi } from '@/lib/api';
 import type { Listing, CropType } from '@/types';
@@ -76,8 +76,8 @@ function Marketplace() {
           <button
             onClick={() => handleCropFilter('')}
             className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${!cropFilter
-                ? 'bg-[#023103] text-white'
-                : 'bg-[#F0FEF1] text-[#046207] hover:bg-[#E6FEE7]'
+              ? 'bg-[#023103] text-white'
+              : 'bg-[#F0FEF1] text-[#046207] hover:bg-[#E6FEE7]'
               }`}
           >
             All Crops
@@ -87,8 +87,8 @@ function Marketplace() {
               key={crop}
               onClick={() => handleCropFilter(crop === cropFilter ? '' : crop)}
               className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${cropFilter === crop
-                  ? 'bg-[#08C40E] text-white'
-                  : 'bg-[#F0FEF1] text-[#046207] hover:bg-[#E6FEE7]'
+                ? 'bg-[#08C40E] text-white'
+                : 'bg-[#F0FEF1] text-[#046207] hover:bg-[#E6FEE7]'
                 }`}
             >
               {CROP_EMOJI[crop]} {crop}
@@ -159,8 +159,8 @@ function Loading() {
 
 export default function MarketplacePage() {
   return (
-    <Suspense fallback={<Loading/>}>
-      <Marketplace/>
+    <Suspense fallback={<Loading />}>
+      <Marketplace />
     </Suspense>
   )
 }

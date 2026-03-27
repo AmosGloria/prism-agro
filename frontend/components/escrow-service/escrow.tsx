@@ -1,12 +1,12 @@
 "use client";
 
 import React from "react";
-import { 
-  ShieldCheck, ArrowRightLeft, Lock, Key, 
+import {
+  ShieldCheck, ArrowRightLeft, Lock, Key,
   CheckCircle2, AlertTriangle, Info, Loader2,
   Wallet, Truck, UserCheck
 } from "lucide-react";
-import { useEscrowSystem, EscrowRole } from "../hooks/useEscrowSystem";
+import { useEscrowSystem, EscrowRole } from "../../hooks/useEscrowSystem";
 
 export default function Escrow({ orderId, role }: { orderId: string, role: EscrowRole }) {
   const { status, releaseCode, setReleaseCode, handleRelease, isProcessing } = useEscrowSystem(orderId, role);
@@ -16,7 +16,7 @@ export default function Escrow({ orderId, role }: { orderId: string, role: Escro
   return (
     <div className="min-h-screen bg-[#F5F5F5] p-4 md:p-8">
       <div className="max-w-4xl mx-auto space-y-6">
-        
+
         <header className="bg-[#0B390C] rounded-[32px] p-8 text-white relative overflow-hidden shadow-xl">
           <div className="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
             <div className="space-y-1">
@@ -27,23 +27,23 @@ export default function Escrow({ orderId, role }: { orderId: string, role: Escro
                 {isReleased ? "Funds Released" : "Escrow Active"}
               </h1>
             </div>
-            
+
             <div className={`px-6 py-3 rounded-2xl font-black text-sm uppercase flex items-center gap-2 shadow-lg 
               ${isReleased ? "bg-[#39AA44] text-white" : "bg-white text-[#0B390C]"}`}>
               {isReleased ? <CheckCircle2 size={18} /> : <Loader2 className="animate-spin" size={18} />}
               Status: {status}
             </div>
           </div>
-        
+
           <div className="absolute top-0 right-0 opacity-10 transform translate-x-1/4 -translate-y-1/4">
-             <ShieldCheck size={300} />
+            <ShieldCheck size={300} />
           </div>
         </header>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          
+
           <main className="lg:col-span-7 bg-white rounded-[32px] p-8 border border-slate-100 shadow-sm">
-            
+
             {role === "BUYER" && !isReleased && (
               <div className="space-y-6 text-center py-6">
                 <div className="bg-[#F5F5F5] inline-flex p-5 rounded-full mb-2">
@@ -68,15 +68,15 @@ export default function Escrow({ orderId, role }: { orderId: string, role: Escro
                 <p className="text-sm text-slate-500 leading-relaxed">
                   Enter the 6-digit code provided by the buyer to verify delivery and release payments instantly.
                 </p>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   maxLength={6}
                   placeholder="000000"
                   value={releaseCode}
                   onChange={(e) => setReleaseCode(e.target.value)}
                   className="w-full text-center text-4xl font-black py-6 rounded-2xl bg-[#F5F5F5] border-2 border-slate-200 focus:border-[#39AA44] focus:outline-none transition-all placeholder:opacity-20"
                 />
-                <button 
+                <button
                   onClick={handleRelease}
                   disabled={releaseCode.length < 6 || isProcessing}
                   className="w-full bg-[#39AA44] text-white py-5 rounded-2xl font-black flex items-center justify-center gap-3 hover:brightness-110 disabled:opacity-30 disabled:grayscale transition-all shadow-xl shadow-[#39AA44]/20"
@@ -93,7 +93,7 @@ export default function Escrow({ orderId, role }: { orderId: string, role: Escro
                   <Wallet className="text-[#39AA44]" />
                   <h2 className="text-xl font-bold text-[#0B390C]">Payment Breakdown</h2>
                 </div>
-                
+
                 <div className="space-y-4">
                   <div className="flex justify-between p-4 rounded-xl bg-[#F5F5F5]">
                     <span className="text-slate-500">Produce Value</span>
