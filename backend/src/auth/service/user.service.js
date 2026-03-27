@@ -5,18 +5,27 @@ const { getAccessToken } = require('../../utilities/interswitch.auth');
 
 const nodemailer = require('nodemailer');
 
-const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS // must be APP PASSWORD
+exports.sendMail = async (email, subject, html) => {
+  try {
+    const transporter = nodemailer.createTransport({
+      service: process.env.EMAIL_HOST,
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+      },
+    });
+    const mailOptions = {
+      from: "PrismAgro <prismagro@gmail.com>",
+      to: email,
+      subject: subject,
+      html: html,
+    };
+    await transporter.sendMail(mailOptions);
+  } catch (error) {
+    console.error('Mail error:', error);
+    throw error;
   }
-});
-
-// Optional but recommended (runs once)
-transporter.verify()
-  .then(() => console.log('✅ Email server ready'))
-  .catch(err => console.error('❌ Email config error:', err));
+};
 
 exports.createUser = async (fullName, email, password) => {
   try {
@@ -94,22 +103,22 @@ exports.verifyNin = async ({ firstName, lastName, nin }) => {
   };
 
   // send otp using nodemailer
-  exports.sendMail = async (email, subject, text) => {
-    try {
-      const mailOptions = {
-        from: `"Prism Agro" <${process.env.EMAIL_USER}>`,
-        to: email,
-        subject,
-        text
-      };
+  // exports.sendMail = async (email, subject, text) => {
+  //   try {
+  //     const mailOptions = {
+  //       from: `"Prism Agro" <${process.env.EMAIL_USER}>`,
+  //       to: email,
+  //       subject,
+  //       text
+  //     };
   
-      return await transporter.sendMail(mailOptions);
+  //     return await transporter.sendMail(mailOptions);
   
-    } catch (error) {
-      console.error('Mail error:', error);
-      throw error;
-    }
-  };
+  //   } catch (error) {
+  //     console.error('Mail error:', error);
+  //     throw error;
+  //   }
+  // };
 
 exports.resendOtp = async (email) => {
     try {

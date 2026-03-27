@@ -1,8 +1,8 @@
 const { get } = require("mongoose");
-const { verifyNin, getUserByEmail, createUser, updateUserOtp } = require("../service/user.service");
+const { verifyNin, getUserByEmail, createUser, updateUserOtp, sendMail } = require("../service/user.service");
 const { hashPassword, generateToken, setTokenCookie, comparePassword } = require("../../helpers/jwt");
 const { generateOtp } = require("../../helpers/otp");
-const { sendMail } = require("../../helpers/email");
+// const { sendMail } = require("../../helpers/email");
 
 exports.registerUser = async (req, res) => {
   try {
