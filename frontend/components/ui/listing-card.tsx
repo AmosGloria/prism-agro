@@ -64,7 +64,7 @@ export function ListingCard({ listing }: { listing: Listing }) {
             View Details
           </button>
           <button
-            onClick={() => router.push(`/buyer/payment?listingId=${listing.id}`)}
+            onClick={() => router.push(`/buyer/payment`)}
             className="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-xl bg-[#08C40E] text-white text-xs font-semibold hover:bg-[#06930A] transition-all shadow-md shadow-green-200 hover:-translate-y-0.5"
           >
             <ShoppingCart size={14} />

@@ -16,8 +16,8 @@ export default function proxy(request: NextRequest) {
 
   if (!requiredRole) return NextResponse.next();
 
-  const token = request.cookies.get("fp_token")?.value;
-  const userRole = request.cookies.get("fp_role")?.value;
+  const token = request.cookies.get("pa_token")?.value;
+  const userRole = request.cookies.get("pa_role")?.value;
 
   if (!token && !userRole) {
     return NextResponse.redirect(new URL("/login", request.url));
