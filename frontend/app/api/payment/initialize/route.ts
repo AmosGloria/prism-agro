@@ -35,6 +35,8 @@ export async function POST(req: NextRequest) {
       redirectUrl: `${process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000"}/buyer/payment/callback?orderId=${orderId}&txnRef=${txnRef}`,
     });
 
+    console.log("ISW RESULT:", result);
+
     // Store txnRef → orderId mapping in DB here
     // await db.payments.create({ txnRef, orderId, amount, status: 'PENDING' });
 

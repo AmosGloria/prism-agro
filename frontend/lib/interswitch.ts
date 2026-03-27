@@ -22,11 +22,11 @@ const ISW_BASE_URL =
     : "https://sandbox.interswitchng.com";
 
 const ISW_CLIENT_ID =
-  process.env.ISW_CLIENT_ID ?? "IKIA3E267D5C80958F024050B2B4822EF0DAB5BD30";
+  process.env.ISW_CLIENT_ID ?? "";
 const ISW_SECRET_KEY =
-  process.env.ISW_SECRET_KEY ?? "ugsmiXPXOOvks9MibvjeIbsKzi5CnNmTAYgJg7Ci";
-const ISW_MERCHANT_CODE = process.env.ISW_MERCHANT_CODE ?? "MX6072";
-const ISW_PAY_ITEM_ID = process.env.ISW_PAY_ITEM_ID ?? "Default_Payable_MX6072";
+  process.env.ISW_SECRET_KEY ?? "";
+const ISW_MERCHANT_CODE = process.env.ISW_MERCHANT_CODE ?? "";
+const ISW_PAY_ITEM_ID = process.env.ISW_PAY_ITEM_ID ?? "";
 
 // Sandbox test values from Interswitch docs
 export const ISW_TEST_CARDS = {

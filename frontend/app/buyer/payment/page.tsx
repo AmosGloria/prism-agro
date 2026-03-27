@@ -409,7 +409,7 @@ function PaymentInner() {
   );
 }
 
-// Page export — Suspense boundary is REQUIRED when using useSearchParams in Next.js
+// Page export
 export default function PaymentPage() {
   return (
     <Suspense
