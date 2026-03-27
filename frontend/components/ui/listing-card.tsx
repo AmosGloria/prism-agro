@@ -16,7 +16,7 @@ export function ListingCard({ listing }: { listing: Listing }) {
       style={{ boxShadow: '0 2px 12px rgba(2,49,3,0.06)' }}
     >
       {/* Produce image / emoji placeholder */}
-      <div className="relative h-36 bg-gradient-to-br from-[#E6FEE7] to-[#CEFDCF] flex items-center justify-center">
+      <div className="relative h-36 bg-linear-to-br from-[#E6FEE7] to-[#CEFDCF] flex items-center justify-center">
         <span className="text-5xl">{CROP_EMOJI[listing.cropType] ?? '🌱'}</span>
         <div className="absolute top-3 right-3">
           <span className="text-xs font-semibold px-2 py-1 rounded-lg bg-white/80 text-[#023103] backdrop-blur-sm">
