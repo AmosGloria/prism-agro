@@ -1,11 +1,11 @@
 "use client";
 
 import React from "react";
-import { 
-  ShieldCheck, Truck, Leaf, ChevronRight, 
-  Loader2, CheckCircle2, Lock, ArrowLeft 
+import {
+  ShieldCheck, Truck, Leaf, ChevronRight,
+  Loader2, CheckCircle2, Lock, ArrowLeft
 } from "lucide-react";
-import { usePaymentFlow, PaymentStatus } from "../hooks/usePaymentFlow";
+import { usePaymentFlow, PaymentStatus } from "../../hooks/usePaymentFlow";
 
 export default function Checkout({ orderId }: { orderId: string }) {
   const { status, initialize, router } = usePaymentFlow(orderId);
@@ -33,7 +33,7 @@ export default function Checkout({ orderId }: { orderId: string }) {
           <p className="text-slate-600 mt-4 leading-relaxed">
             Funds are now held in <strong>Escrow</strong>. They will only be released to the farmer after you confirm the delivery.
           </p>
-          <button 
+          <button
             onClick={() => router.push("/buyer/orders")}
             className="w-full mt-10 bg-[#39AA44] text-white py-4 rounded-2xl font-bold hover:brightness-110 transition-all active:scale-95"
           >
@@ -61,11 +61,11 @@ export default function Checkout({ orderId }: { orderId: string }) {
       </nav>
 
       <main className="max-w-6xl mx-auto px-4 py-8 md:py-16 grid grid-cols-1 lg:grid-cols-12 gap-10">
-        
+
         <div className="lg:col-span-7 space-y-8">
           <section className="bg-white rounded-[28px] p-8 shadow-sm border border-slate-100">
             <h2 className="text-2xl font-bold text-[#0B390C] mb-8">Order Summary</h2>
-            
+
             <div className="flex flex-col sm:flex-row gap-8 p-6 rounded-[20px] bg-[#F5F5F5]/50 border border-slate-100">
               <div className="w-full sm:w-32 h-32 bg-slate-200 rounded-2xl overflow-hidden shadow-inner">
                 <img src="/api/placeholder/150/150" alt="Produce" className="w-full h-full object-cover" />
@@ -107,7 +107,7 @@ export default function Checkout({ orderId }: { orderId: string }) {
         <div className="lg:col-span-5">
           <div className="bg-white rounded-[32px] p-8 shadow-2xl shadow-slate-200 border border-slate-100 sticky top-28">
             <h3 className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-6">Price Breakdown</h3>
-            
+
             <div className="space-y-5 mb-10">
               <div className="flex justify-between items-center text-slate-600">
                 <span className="text-sm">Produce Subtotal</span>
@@ -130,7 +130,7 @@ export default function Checkout({ orderId }: { orderId: string }) {
               </div>
             </div>
 
-            <button 
+            <button
               onClick={initialize}
               className="w-full bg-[#39AA44] text-white py-6 rounded-2xl font-black text-lg flex items-center justify-center gap-3 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-xl shadow-[#39AA44]/20"
             >

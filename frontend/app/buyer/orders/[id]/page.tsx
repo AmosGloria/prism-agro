@@ -93,8 +93,8 @@ export default function OrderDetailPage() {
               <React.Fragment key={s}>
                 <div className="flex flex-col items-center flex-shrink-0">
                   <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold transition-all ${i < curStep ? 'bg-[#08C40E] text-white' :
-                      i === curStep ? 'bg-[#08C40E] text-white ring-2 ring-[#0AF511] ring-offset-2' :
-                        'bg-[#E6FEE7] text-[#9DFBA0]'
+                    i === curStep ? 'bg-[#08C40E] text-white ring-2 ring-[#0AF511] ring-offset-2' :
+                      'bg-[#E6FEE7] text-[#9DFBA0]'
                     }`}>
                     {i < curStep ? '✓' : i + 1}
                   </div>

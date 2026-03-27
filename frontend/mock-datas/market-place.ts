@@ -14,7 +14,7 @@ export const CROP_TYPES: CropType[] = [
 ];
 
 export const CROP_EMOJI: Record<string, string> = {
-  Tomato: "🍅",
+  Tomato: "/images/market-place-images/tomatoes.png",
   Yam: "🥔",
   Cassava: "🫚",
   Maize: "🌽",
