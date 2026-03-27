@@ -37,14 +37,14 @@ Database Architecture: Designed the MongoDB schema to handle complex order state
 
 Security: Implemented role-based access control (RBAC) to protect Admin and Farmer sensitive data.
 
-Tochukwu (Frontend Developer)
+Tochukwu Nwosa (Frontend Developer)
 Dashboard Implementation: Built the highly responsive Buyer and Logistics dashboards using Next.js and Tailwind CSS.
 
 Handshake UI: Developed the logic-driven "6-digit code" input system and the real-time transaction state machine.
 
 API Integration: Connected the frontend to the backend endpoints, ensuring smooth redirects between the app and the Interswitch gateway.
 
-Opeyemi (Product Designer)
+Alabi Abosede Opeyemi (Product Designer)
 UI/UX Design: Created the high-fidelity Figma prototype using the brand palette (#39AA44, #0B390C, #F5F5F5).
 
 Material Design 3: Applied Material 3 principles to ensure accessibility for farmers and drivers working in high-glare, outdoor environments.
