@@ -15,6 +15,8 @@ export const MOCK_LISTINGS: Listing[] = [
     imageUrl: "",
     status: "AVAILABLE",
     createdAt: new Date().toISOString(),
+    description:
+      "Premium Roma tomatoes, hand-sorted, farm-fresh from our Kano Valley farm.",
   },
   {
     id: "2",
@@ -91,4 +93,4 @@ export const MOCK_LISTINGS: Listing[] = [
     status: "AVAILABLE",
     createdAt: new Date().toISOString(),
   },
-];
+] ;
