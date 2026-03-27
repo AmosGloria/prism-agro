@@ -97,7 +97,6 @@ function SuccessScreen({ listing, qty, total, onGoToOrders }: {
           The farmer will only be paid after you confirm delivery with your <strong>6-digit release code</strong>.
         </p>
 
-        {/* Receipt strip */}
         <div className="mt-6 bg-[#F5FFF5] rounded-2xl p-4 border border-[#E6FEE7] text-left space-y-2">
           <div className="flex justify-between text-sm">
             <span className="text-gray-400">Produce</span>
@@ -115,7 +114,6 @@ function SuccessScreen({ listing, qty, total, onGoToOrders }: {
           </div>
         </div>
 
-        {/* Escrow steps */}
         <div className="mt-6 text-left space-y-3">
           {[
             { step: '1', label: 'Payment secured in escrow', done: true },
@@ -147,7 +145,6 @@ function SuccessScreen({ listing, qty, total, onGoToOrders }: {
   );
 }
 
-/* ─── Main checkout UI ─────────────────────────────────────── */
 function CheckoutContent({ listing, qty }: { listing: Listing; qty: number }) {
   const { status, errorMsg, initialize, reset, router } = usePaymentFlow(listing.id);
   const pricing = computeCheckoutPricing(qty, listing.pricePerKg);
@@ -178,8 +175,6 @@ function CheckoutContent({ listing, qty }: { listing: Listing; qty: number }) {
 
   return (
     <div className="min-h-screen bg-[#F5FFF5]">
-
-      {/* ── Navbar ── */}
       <nav className="bg-[#023103] text-white py-4 px-5 sticky top-0 z-50 shadow-lg">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
           <button
@@ -197,7 +192,6 @@ function CheckoutContent({ listing, qty }: { listing: Listing; qty: number }) {
         </div>
       </nav>
 
-      {/* ── Interswitch trust bar ── */}
       <div className="bg-[#046207]/10 border-b border-[#CEFDCF]">
         <div className="max-w-6xl mx-auto px-4 py-2 flex items-center justify-between text-xs text-[#046207]">
           <span className="font-semibold flex items-center gap-1.5">
@@ -211,14 +205,11 @@ function CheckoutContent({ listing, qty }: { listing: Listing; qty: number }) {
 
       <main className="max-w-6xl mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
 
-        {/* ── LEFT COLUMN ── */}
         <div className="lg:col-span-7 space-y-6">
 
-          {/* Product card */}
           <section className="bg-white rounded-3xl border border-[#E6FEE7] p-6 shadow-sm">
             <h2 className="text-xs font-bold uppercase tracking-widest text-[#046207] mb-4">Order Summary</h2>
             <div className="flex gap-5 items-center p-4 bg-[#F5FFF5] rounded-2xl border border-[#E6FEE7]">
-              {/* Produce icon */}
               <div className="w-20 h-20 bg-gradient-to-br from-[#E6FEE7] to-[#CEFDCF] rounded-2xl flex items-center justify-center text-4xl flex-shrink-0 shadow-inner">
                 {CROP_EMOJI[listing.cropType] ?? '🌱'}
               </div>
@@ -249,7 +240,6 @@ function CheckoutContent({ listing, qty }: { listing: Listing; qty: number }) {
             </div>
           </section>
 
-          {/* Payment method selector */}
           <section className="bg-white rounded-3xl border border-[#E6FEE7] p-6 shadow-sm">
             <h2 className="text-xs font-bold uppercase tracking-widest text-[#046207] mb-4">Payment Method</h2>
             <div className="grid grid-cols-3 gap-3">
@@ -272,7 +262,6 @@ function CheckoutContent({ listing, qty }: { listing: Listing; qty: number }) {
               ))}
             </div>
 
-            {/* Mock card form */}
             {payMethod === 'card' && (
               <div className="mt-5 space-y-3 animate-fade-up">
                 <div>
@@ -350,7 +339,6 @@ function CheckoutContent({ listing, qty }: { listing: Listing; qty: number }) {
             )}
           </section>
 
-          {/* Escrow explanation */}
           <div className="bg-[#023103] text-white rounded-3xl p-6 relative overflow-hidden shadow-xl shadow-green-900/20">
             <div className="relative z-10 flex gap-4">
               <div className="bg-[#08C40E] p-3 rounded-2xl h-fit shadow-lg shadow-[#08C40E]/30 flex-shrink-0">
@@ -371,13 +359,11 @@ function CheckoutContent({ listing, qty }: { listing: Listing; qty: number }) {
           </div>
         </div>
 
-        {/* ── RIGHT COLUMN — Price breakdown + CTA ── */}
         <div className="lg:col-span-5">
           <div className="bg-white rounded-3xl border border-[#E6FEE7] p-7 shadow-xl shadow-green-50 sticky top-24">
             <h3 className="text-xs font-bold uppercase tracking-widest text-[#046207] mb-6">Price Breakdown</h3>
 
             <div className="space-y-4 mb-6">
-              {/* Produce subtotal */}
               <div className="flex justify-between items-center">
                 <div>
                   <p className="text-sm text-[#023103] font-medium">Produce Cost</p>
@@ -386,7 +372,6 @@ function CheckoutContent({ listing, qty }: { listing: Listing; qty: number }) {
                 <span className="font-bold text-[#023103]">{fmt(pricing.produceSubtotal)}</span>
               </div>
 
-              {/* Logistics fee */}
               <div className="flex justify-between items-center">
                 <div className="flex items-center gap-2">
                   <div>
@@ -399,7 +384,6 @@ function CheckoutContent({ listing, qty }: { listing: Listing; qty: number }) {
                 <span className="font-bold text-[#023103]">{fmt(pricing.logisticsFee)}</span>
               </div>
 
-              {/* Escrow fee */}
               <div className="flex justify-between items-center">
                 <div>
                   <p className="text-sm text-[#023103] font-medium flex items-center gap-1.5">
@@ -410,7 +394,6 @@ function CheckoutContent({ listing, qty }: { listing: Listing; qty: number }) {
                 <span className="font-bold text-[#023103]">{fmt(pricing.escrowFee)}</span>
               </div>
 
-              {/* Divider */}
               <div className="pt-4 border-t-2 border-dashed border-[#E6FEE7] flex justify-between items-end">
                 <div>
                   <p className="text-xs text-gray-400 uppercase tracking-wide font-bold">Total to Pay</p>
@@ -422,7 +405,6 @@ function CheckoutContent({ listing, qty }: { listing: Listing; qty: number }) {
               </div>
             </div>
 
-            {/* Error state */}
             {status === 'error' && (
               <div className="mb-4 flex items-center gap-2 bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-xl text-sm animate-fade-up">
                 <AlertCircle size={16} className="flex-shrink-0" />
@@ -431,7 +413,6 @@ function CheckoutContent({ listing, qty }: { listing: Listing; qty: number }) {
               </div>
             )}
 
-            {/* CTA */}
             <button
               id="pay-securely-btn"
               onClick={() => initialize(pricing)}
@@ -444,7 +425,6 @@ function CheckoutContent({ listing, qty }: { listing: Listing; qty: number }) {
               <ChevronRight size={18} />
             </button>
 
-            {/* Trust badges */}
             <div className="mt-6 flex flex-col items-center gap-3 opacity-50">
               <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400">Powered by</p>
               <div className="flex items-center gap-5">
@@ -463,10 +443,10 @@ function CheckoutContent({ listing, qty }: { listing: Listing; qty: number }) {
   );
 }
 
-/* ─── Data loader ──────────────────────────────────────────── */
 function CheckoutLoader() {
-  const { id } = useParams<{ id: string }>();
+  const params = useParams();
   const searchParams = useSearchParams();
+  const id = Array.isArray(params?.id) ? params.id[0] : params?.id;
   const qty = parseInt(searchParams?.get('qty') ?? '1', 10) || 1;
 
   const [listing, setListing] = useState<Listing | null>(null);
@@ -480,7 +460,7 @@ function CheckoutLoader() {
     listingsApi.getById(id)
       .then(d => setListing(d as Listing))
       .catch(() => {
-        // Fallback to mock data
+
         const mock = MOCK_LISTINGS.find(l => l.id === id);
         if (mock) setListing(mock);
         else setNotFound(true);
