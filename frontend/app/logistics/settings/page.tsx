@@ -92,7 +92,7 @@ export default function LogisticsSettingsPage() {
           <ShieldCheck size={22} className="text-[#08C40E] shrink-0" />
           <div>
             <p className="text-sm font-bold text-[#023103]">NIN Verified ✓</p>
-            <p className="text-xs text-[#06930A]">Your National Identity Number has been verified. You are cleared to operate on FarmPrism.</p>
+            <p className="text-xs text-[#06930A]">Your National Identity Number has been verified. You are cleared to operate on PrismAgro.</p>
           </div>
         </div>
 

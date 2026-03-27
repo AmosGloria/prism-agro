@@ -39,8 +39,8 @@ export const useLoginForm = () => {
       const demoUser = DEMO_USERS[values.email];
 
       if (demoUser && values.password === "password123") {
-        document.cookie = `fp_token=demo-token; path=/`;
-        document.cookie = `fp_role=${demoUser.role}; path=/`;
+        document.cookie = `pa_token=demo-token; path=/`;
+        document.cookie = `pa_role=${demoUser.role}; path=/`;
 
         router.push(demoUser.redirect);
         return;
@@ -64,8 +64,8 @@ export const useLoginForm = () => {
       }
 
       // Expected response: { token, role, redirect }
-      document.cookie = `fp_token=${data.token}; path=/`;
-      document.cookie = `fp_role=${data.role}; path=/`;
+      document.cookie = `pa_token=${data.token}; path=/`;
+      document.cookie = `pa_role=${data.role}; path=/`;
 
       router.push(data.redirect || "/dashboard");
     } catch (err: any) {
