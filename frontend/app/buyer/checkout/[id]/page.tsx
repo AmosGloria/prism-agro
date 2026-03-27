@@ -13,12 +13,10 @@ import { MOCK_LISTINGS } from '@/mock-datas/buyer';
 import { CROP_EMOJI } from '@/mock-datas/market-place';
 import { usePaymentFlow, computeCheckoutPricing } from '@/hooks/usePaymentFlow';
 
-/* ─── helpers ──────────────────────────────────────────────── */
 function fmt(n: number) {
   return '₦' + n.toLocaleString('en-NG', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 }
 
-/* ─── Loading screens ──────────────────────────────────────── */
 function SpinnerScreen({ title, subtitle }: { title: string; subtitle: string }) {
   return (
     <div className="min-h-screen bg-[#F5FFF5] flex flex-col items-center justify-center p-6 text-center">
@@ -33,7 +31,6 @@ function SpinnerScreen({ title, subtitle }: { title: string; subtitle: string })
       </h2>
       <p className="text-sm text-[#06930A] mt-2 max-w-xs leading-relaxed">{subtitle}</p>
 
-      {/* Interswitch branding strip */}
       <div className="mt-10 flex flex-col items-center gap-2 opacity-50">
         <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400">Secured by</p>
         <div className="flex items-center gap-4">
@@ -83,7 +80,6 @@ function SuccessScreen({ listing, qty, total, onGoToOrders }: {
       <div
         className={`max-w-md w-full bg-white rounded-[32px] p-10 shadow-2xl shadow-green-100 border border-[#E6FEE7] text-center transition-all duration-500 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
       >
-        {/* Icon */}
         <div className="relative mx-auto mb-8 w-fit">
           <div className="w-24 h-24 rounded-full bg-[#08C40E]/10 flex items-center justify-center animate-pulse-glow">
             <CheckCircle2 className="w-14 h-14 text-[#08C40E]" />

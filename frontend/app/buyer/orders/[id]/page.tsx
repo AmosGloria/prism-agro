@@ -5,7 +5,7 @@ import { ArrowLeft, MapPin, Package, Truck, User, Clock, CheckCircle } from 'luc
 import { ordersApi } from '@/lib/api';
 import type { Order } from '@/types';
 import { StatusBadge } from '@/components/ui/getStatusBadge';
-import { CROP_EMOJI } from '@/mock-datas/market-place';
+import { ProduceIcon } from '@/components/ui/produce-icon';
 import { ReleaseCodeModal } from '@/components/ui/modal';
 
 const MOCK_ORDER: Order = {
@@ -71,8 +71,8 @@ export default function OrderDetailPage() {
       {/* Produce card */}
       <div className="bg-white rounded-2xl border border-[#E6FEE7] p-5 mb-4">
         <div className="flex items-center gap-4">
-          <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#E6FEE7] to-[#CEFDCF] flex items-center justify-center text-3xl">
-            {CROP_EMOJI[order.cropType] ?? '🌱'}
+          <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#E6FEE7] to-[#CEFDCF] flex items-center justify-center">
+            <ProduceIcon cropType={order.cropType} size={36} />
           </div>
           <div className="flex-1">
             <p className="font-black text-[#023103] text-lg" style={{ fontFamily: 'var(--font-display)' }}>{order.cropType}</p>

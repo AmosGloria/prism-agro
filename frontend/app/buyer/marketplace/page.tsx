@@ -6,9 +6,10 @@ import { useFreshness, useTimeAgo } from '@/hooks';
 import { listingsApi } from '@/lib/api';
 import type { Listing, CropType } from '@/types';
 import { MOCK_LISTINGS } from '@/mock-datas/buyer';
-import { CROP_EMOJI, CROP_TYPES } from '@/mock-datas/market-place';
+import { CROP_TYPES } from '@/mock-datas/market-place';
 import { EmptyState } from '@/components/ui/empty-state';
 import { ListingCard } from '@/components/ui/listing-card';
+import { ProduceIcon } from '@/components/ui/produce-icon';
 
 
 function MarketplaceInner() {
@@ -63,7 +64,7 @@ function MarketplaceInner() {
           {CROP_TYPES.map(crop => (
             <button key={crop} onClick={() => handleCropFilter(crop === cropFilter ? '' : crop)}
               className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${cropFilter === crop ? 'bg-[#08C40E] text-white' : 'bg-[#F0FEF1] text-[#046207] hover:bg-[#E6FEE7]'}`}>
-              {CROP_EMOJI[crop]} {crop}
+              <ProduceIcon cropType={crop} size={14} /> {crop}
             </button>
           ))}
         </div>
@@ -79,7 +80,7 @@ function MarketplaceInner() {
 
       <div className="flex gap-4 mb-6 text-sm">
         <span className="text-[#046207]"><span className="font-bold text-[#023103]">{filtered.length}</span> listings found</span>
-        {cropFilter && <span className="text-[#046207]">Showing: <span className="font-semibold">{CROP_EMOJI[cropFilter]} {cropFilter}</span></span>}
+        {cropFilter && <span className="text-[#046207]">Showing: <span className="font-semibold flex items-center gap-1 inline-flex"><ProduceIcon cropType={cropFilter} size={14} /> {cropFilter}</span></span>}
       </div>
 
       {loading ? (
